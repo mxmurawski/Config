@@ -1,0 +1,7 @@
+user = {db_user}
+password = {db_user_password}
+hosts = 127.0.0.1
+dbname = mail
+table = users
+select_field = CONCAT(SUBSTRING_INDEX(email,'@',-1),'/',SUBSTRING_INDEX(email,'@',1),'/')
+where_field = email

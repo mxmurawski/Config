@@ -1,0 +1,26 @@
+myhostname = {hostname}
+smtp_tls_security_level = encrypt
+smtp_tls_cert_file = {ssl_cert_path}
+smtp_tls_key_file = {ssl_cert_key_path}
+smtp_tls_session_cache_database = btree:${data_directory}/smtp_scache
+smtpd_tls_security_level = encrypt
+smtpd_tls_cert_file = {ssl_cert_path}
+smtpd_tls_key_file = {ssl_cert_key_path}
+smtpd_tls_session_cache_database = btree:${data_directory}/smtpd_scache
+#25MB
+message_size_limit = 26214400
+#1GB
+mailbox_size_limit = 2048000000
+compatibility_level = 2
+smtpd_sasl_auth_enable = yes
+virtual_mailbox_domains = mysql:/etc/postfix/domain
+virtual_mailbox_maps = mysql:/etc/postfix/mailbox
+virtual_mailbox_base = {mail_data_directory}
+virtual_uid_maps = static:{mail_data_directory_user_owner_id}
+virtual_gid_maps = static:{mail_data_directory_group_owner_id}
+milter_default_action = accept
+smtpd_milters = inet:localhost:8891
+non_smtpd_milters = inet:localhost:8891
+inet_interfaces = all
+inet_protocols = ipv4
+virtual_alias_maps = mysql:/etc/postfix/alias

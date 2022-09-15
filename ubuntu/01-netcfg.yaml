@@ -1,0 +1,10 @@
+network:
+ version: 2
+ ethernets:
+  eth0:
+   addresses:
+    - {ip_address}/{network_mask}
+   gateway4: {gateway_ip_address}
+   nameservers:
+    addresses: [dns_server_ip_address]
+   link-local: []
